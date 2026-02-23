@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 
 const C = {
-  bg: "#0a0a1a", surface: "#12122a", card: "#1a1a3e",
-  accent: "#6366f1", accentLight: "#818cf8", accentDim: "#4f46e5",
-  green: "#22c55e", greenDim: "#16a34a", red: "#ef4444",
-  orange: "#f59e0b", orangeDim: "#d97706", cyan: "#06b6d4",
-  pink: "#ec4899", text: "#e2e8f0", textDim: "#94a3b8",
-  textMuted: "#64748b", border: "#1e293b",
+  bg: "#f8fafc", surface: "#f1f5f9", card: "#ffffff",
+  accent: "#4f46e5", accentLight: "#4338ca", accentDim: "#6366f1",
+  green: "#16a34a", greenDim: "#15803d", red: "#dc2626",
+  orange: "#d97706", orangeDim: "#b45309", cyan: "#0891b2",
+  pink: "#db2777", text: "#0f172a", textDim: "#475569",
+  textMuted: "#94a3b8", border: "#e2e8f0",
 };
 
 const Tag = ({ venue, color }) => (
@@ -27,7 +27,7 @@ const Insight = ({ color, children }) => (
 );
 
 const Card = ({ title, sub, children, border, accent: a }) => (
-  <div style={{ background: C.card, borderRadius: 12, padding: 18, border: `1px solid ${border || C.border}`, display: "flex", flexDirection: "column", gap: 8, flex: 1, position: "relative", overflow: "hidden" }}>
+  <div style={{ background: C.card, borderRadius: 12, padding: 18, border: `1px solid ${border || C.border}`, boxShadow: "0 1px 3px rgba(0,0,0,0.06)", display: "flex", flexDirection: "column", gap: 8, flex: 1, position: "relative", overflow: "hidden" }}>
     {a && <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: a }} />}
     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
       <h4 style={{ margin: 0, fontSize: 15, color: C.text, fontWeight: 700 }}>{title}</h4>
@@ -41,7 +41,7 @@ const Card = ({ title, sub, children, border, accent: a }) => (
 const S_Title = () => (
   <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100%", textAlign: "center", gap: 24 }}>
     <div style={{ fontSize: 13, letterSpacing: 6, color: C.accentLight, textTransform: "uppercase", fontWeight: 600 }}>Comprehensive Exam Presentation</div>
-    <h1 style={{ fontSize: 46, fontWeight: 800, lineHeight: 1.15, background: `linear-gradient(135deg, ${C.accentLight}, ${C.cyan})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", maxWidth: 800, margin: 0 }}>Interpretable & Efficient Reasoning in AI</h1>
+    <h1 style={{ fontSize: 46, fontWeight: 800, lineHeight: 1.15, background: `linear-gradient(135deg, ${C.accent}, ${C.cyan})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", maxWidth: 800, margin: 0 }}>Interpretable & Efficient Reasoning in AI</h1>
     <p style={{ fontSize: 20, color: C.textDim, maxWidth: 600, margin: 0 }}>A Survey Across NLP, Vision, and Reinforcement Learning</p>
     <div style={{ marginTop: 32, display: "flex", gap: 16 }}>
       {[{ l: "NLP", c: C.accent }, { l: "Vision", c: C.green }, { l: "RL", c: C.orange }].map(d => (
@@ -1067,7 +1067,7 @@ export default function Presentation() {
       </div>
       {nav && (
         <div style={{ position: "absolute", inset: 0, background: "rgba(0,0,0,0.85)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 10 }} onClick={() => setNav(false)}>
-          <div style={{ background: C.surface, borderRadius: 16, padding: 24, maxWidth: 520, width: "90%", maxHeight: "80vh", overflow: "auto" }} onClick={e => e.stopPropagation()}>
+          <div style={{ background: C.card, borderRadius: 16, padding: 24, maxWidth: 520, width: "90%", maxHeight: "80vh", overflow: "auto", boxShadow: "0 25px 50px rgba(0,0,0,0.25)" }} onClick={e => e.stopPropagation()}>
             <h3 style={{ margin: "0 0 16px", fontSize: 18 }}>Slide Navigator</h3>
             {["intro", "nlp", "vision", "rl", "end"].map(sec => (
               <div key={sec} style={{ marginBottom: 12 }}>
